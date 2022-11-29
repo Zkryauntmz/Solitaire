@@ -1,4 +1,4 @@
-# gsdc_2
+# SOLİTAİRE
 
 A new Flutter project.
 
