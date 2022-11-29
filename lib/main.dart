@@ -1,5 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -25,8 +27,23 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  Color color1 = Colors.white;
+  Color color2 = Colors.blue;
+  Color color3 = Colors.red;
+  Color color4 = Colors.green;
+  Color color5 = Colors.yellow;
+
   @override
   Widget build(BuildContext context) {
+    /*  Color _randomColor =
+        Colors.primaries[Random().nextInt(Colors.primaries.length)];*/
+    final _random = Random();
+
+/* ....... */
+// Using Color.fromARGB
+    /*  final _randomColor = Color.fromARGB(_random.nextInt(256),
+        _random.nextInt(256), _random.nextInt(256), _random.nextInt(256));
+*/
     return Scaffold(
       backgroundColor: Colors.green[800],
       body: SafeArea(
@@ -54,19 +71,19 @@ class _MyHomePageState extends State<MyHomePage> {
             width: MediaQuery.of(context).size.width,
             child: Stack(
               children: [
-                solitaireCard(60, 60, Colors.white),
-                solitaireCard(60, 180, Colors.white),
-                solitaireCard(60, 230, Colors.white),
-                solitaireCard(60, 280, Colors.white),
-                solitaireCard(60, 330, Colors.white),
+                solitaireCard(60, 60, color1),
+                solitaireCard(60, 180, color1),
+                solitaireCard(60, 230, color1),
+                solitaireCard(60, 280, color1),
+                solitaireCard(60, 330, color1),
                 for (double left = 30; left < 375; left = left + 50)
-                  solitaireCard(160, left, Colors.blue),
+                  solitaireCard(160, left, color2),
                 for (double left = 80; left < 375; left = left + 50)
-                  solitaireCard(200, left, Colors.purple),
+                  solitaireCard(200, left, color3),
                 for (double left = 130; left < 375; left = left + 50)
-                  solitaireCard(250, left, Colors.yellow),
+                  solitaireCard(250, left, color4),
                 for (double left = 180; left < 375; left = left + 50)
-                  solitaireCard(300, left, Colors.orange),
+                  solitaireCard(300, left, color5),
               ],
             ),
           ),
@@ -74,7 +91,16 @@ class _MyHomePageState extends State<MyHomePage> {
             height: 15,
           ),
           TextButton(
-              onPressed: () => print('RENKLER DEĞİŞİYOR'),
+              onPressed: () {
+                setState(() {
+                  Color colorx = color1;
+                  color1 = color2;
+                  color2 = color3;
+                  color3 = color4;
+                  color4 = color5;
+                  color5 = colorx;
+                });
+              },
               child: Icon(
                 Icons.refresh,
                 color: Colors.white,
